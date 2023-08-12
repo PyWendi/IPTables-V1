@@ -90,7 +90,7 @@ def SecondOperation():
     print("1 - Add or Block packets from a specific IP adress\n2 - Add or Block packets from a specific PORT\n3 - Add or block packets from a specifi PORT and IP adress\n0 - Return to the main menu")
     choice = input("\nYour choice : ")
     chains = ["INPUT", "OUTPUT", "FORWARD"]
-    targets = ["ACCEPT,", "DROP"]
+    targets = ["ACCEPT", "DROP"]
     
     if (choice.isdigit() and (int(choice) in range(0,4))):
         choice = int(choice)
@@ -104,7 +104,7 @@ def SecondOperation():
             protocol = input("Enter aa protocol : ")
             ipSource = input("Enter the IP Adress : ")
             target = input("Select the target, 1-ACCEPT, 2-DROP : ")
-            if (chain.isdigit() and (chain in range(1,4))):
+            if (chain.isdigit() and (int(chain) in range(1,4))):
                 if target.isdigit() and int(target) in range(1,3):
                     chain = chains[int(chain) - 1]
                     target = targets[int(target) - 1]
@@ -124,7 +124,7 @@ def SecondOperation():
             protocol = input("Enter aa protocol : ")
             port = input("Enter the PORT : ")
             target = input("Select the target, 1-ACCEPT, 2-DROP : ")
-            if (chain.isdigit() and (chain in range(1,4))):
+            if (chain.isdigit() and (int(chain) in range(1,4))):
                 if target.isdigit() and int(target) in range(1,3):
                     chain = chains[int(chain) - 1]
                     target = targets[int(target) - 1]
@@ -145,7 +145,7 @@ def SecondOperation():
             ipSource = input("Enter the IP Adress : ")
             port = input("Enter the PORT : ")
             target = input("Select the target, 1-ACCEPT, 2-DROP : ")
-            if (chain.isdigit() and (chain in range(1,4))):
+            if (chain.isdigit() and (int(chain) in range(1,4))):
                 if target.isdigit() and int(target) in range(1,3):
                     chain = chains[int(chain) - 1]
                     target = targets[int(target) - 1]
@@ -232,7 +232,7 @@ def FourthOperation():
             chain = input("Please select a chain : 1-INPUT, 2-OUTPUT, 3-FORWARD : ")
             custom_chain = input("Please enter the custom chain name : ")
             
-            if (chain.isdigit() and (chain in range(1,4))) and custom_chain.isalpha():
+            if (chain.isdigit() and (int(chain) in range(1,4))) and custom_chain.isalpha():
                 chain = chains[int(chain) - 1]
                 
                 # Calling main function
@@ -249,7 +249,7 @@ def FourthOperation():
             seconds = input("Enter the number of seconds to update connection : ")
             hitcount = input("Enter the number of hitcount to update connection : ")
             
-            if (chain.isdigit() and (chain in range(1,4))) and port.isdigit() and seconds.isdigit() and hitcount.isdigit():
+            if (chain.isdigit() and (int(chain)clear in range(1,4))) and port.isdigit() and seconds.isdigit() and hitcount.isdigit():
                 chain = chains[int(chain) - 1]
                 # Calling main function
                 connection_limitation(chain, protocol, port, seconds, hitcount)
