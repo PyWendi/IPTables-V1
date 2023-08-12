@@ -37,9 +37,9 @@ def FirtsOperation():
             print("__Deleting rule__")    
             chains = ["INPUT", "OUTPUT", "FORWARD"]
             chain = input("Please select a chain : 1-INPUT, 2-OUTPUT, 3-FORWARD : ")
-            rule = input("Write your rule")
+            rule = input("Write your rule : ")
             
-            if (chain.isdigit() and (chain in range(1,4))):
+            if (chain.isdigit() and (int(chain) in range(1,4))):
                 chain = chains[int(chain) - 1]
                 
                 # Calling main function
