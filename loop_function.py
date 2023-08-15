@@ -249,7 +249,7 @@ def FourthOperation():
             seconds = input("Enter the number of seconds to update connection : ")
             hitcount = input("Enter the number of hitcount to update connection : ")
             
-            if (chain.isdigit() and (int(chain)clear in range(1,4))) and port.isdigit() and seconds.isdigit() and hitcount.isdigit():
+            if (chain.isdigit() and (int(chain) in range(1,4))) and port.isdigit() and seconds.isdigit() and hitcount.isdigit():
                 chain = chains[int(chain) - 1]
                 # Calling main function
                 connection_limitation(chain, protocol, port, seconds, hitcount)

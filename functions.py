@@ -116,16 +116,20 @@ Saving rules configution
 """
 
 def SaveRulesInAFile(filename):
-    cmd = ["sudo", "iptables-save", ">", filename]
-    output = subprocess.run(cmd, check=True)
-    print(f"Rules saved inside '{filename}' file.")
-    print(output)
-    
+    try:
+        with open(filename, 'w') as f:
+            subprocess.run(['sudo', 'iptables-save'], stdout=f, check=True)
+        print(f"Iptables rules saved to {filename}")
+    except subprocess.CalledProcessError as e:
+        print(f"Error saving iptables rules: {e}")
+
 def restoreRulesInAFile(filename):
-    cmd = ["sudo", "iptables-restore", "<", filename]
-    output = subprocess.run(cmd, check=True)
-    print(f"Rules Restored from '{filename}' file.")
-    print(output)
+    try:
+        with open(filename, 'r') as f:
+            subprocess.run(['sudo', 'iptables-restore'], stdin=f, check=True)
+        print(f"Iptables rules restored from {filename}")
+    except subprocess.CalledProcessError as e:
+        print(f"Error restoring iptables rules: {e}")
 
 
 
